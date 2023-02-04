@@ -3,13 +3,9 @@ led.enable(false)
 let 사람있음 = 0
 let distance2 = 200
 basic.forever(function () {
-    basic.pause(100)
-})
-basic.forever(function () {
     if (사람있음 == 0 && distance2 < 30) {
         music.playMelody("C5 B A G F E D C ", 120)
         사람있음 = 1
-        serial.writeLine("\"사람있음..\"")
     }
     if (사람있음 == 1 && distance2 > 70) {
         사람있음 = 0
@@ -24,5 +20,7 @@ basic.forever(function () {
     )
     basic.pause(100)
     serial.writeValue("x", distance)
-    distance2 = distance
+    if (distance != 0) {
+        distance2 = distance
+    }
 })
